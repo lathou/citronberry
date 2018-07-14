@@ -4,8 +4,7 @@ Javacript shortcuts: jquery like, but lighter.
 
 
 ## Select node(s)
-**new Element(*CSSselector*)**
-
+**new Element(*CSSselector*)**<br/>
 Ex : var element = new Element('.myClass');
 
 
@@ -13,8 +12,8 @@ Ex : var element = new Element('.myClass');
 
 | Methods                    | example                                        | return  |
 | -------------------------- |------------------------------------------------| --------|
-|**getClass()**              |  var class = element.getClass();               | string  |
-| **hasClass(*class*)**      | var class = element.hasClass();                | boolean |
-| **addClass(*class*)**      | var class = element.addClass('myNewClass');    | /       |
-| **removeClass(*class*)**   | var class = element.removeClass('myClass');    | /       |
+|**getClass()**              | var class = element.getClass();                | string  |
+| **hasClass(*class*)**      | var hasClass = element.hasClass();             | boolean |
+| **addClass(*class*)**      | element.addClass('myNewClass');                | /       |
+| **removeClass(*class*)**   | element.removeClass('myClass'); <br/>  element.removeClass() //remove all class; | /       |
 
