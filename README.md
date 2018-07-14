@@ -10,10 +10,10 @@ Ex : var element = new Element('.myClass');
 
 ## Class
 
-| Methods                    | example                                        | return  |
-| -------------------------- |------------------------------------------------| --------|
-|**getClass()**              | var class = element.getClass();                | string  |
-| **hasClass(*class*)**      | var hasClass = element.hasClass();             | boolean |
-| **addClass(*class*)**      | element.addClass('myNewClass');                | /       |
-| **removeClass(*class*)**   | element.removeClass('myClass'); <br/>  element.removeClass() //remove all class; | /       |
+| Methods                    | example                                        |                                                 |
+| -------------------------- |------------------------------------------------| ------------------------------------------------|
+|**getClass()**              | var class = element.getClass();                | return a string                                 |
+| **hasClass(*class*)**      | var hasClass = element.hasClass();             | return a boolean                                |
+| **addClass(*class*)**      | element.addClass('myNewClass');                | add a class                                     |
+| **removeClass(*class*)**   | element.removeClass('myClass'); <br/>element.removeClass(); | remove a class or all class        |
 
