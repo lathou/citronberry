@@ -15,5 +15,5 @@ Ex : var element = new Element('.myClass');
 |**getClass()**              | var class = element.getClass();                | return a string                                 |
 | **hasClass(*class*)**      | var hasClass = element.hasClass();             | return a boolean                                |
 | **addClass(*class*)**      | element.addClass('myNewClass');                | add a class                                     |
-| **removeClass(*class*)**   | element.removeClass('myClass'); <br/>element.removeClass(); | remove a class or all class        |
+| **removeClass(*class*)**   | element.removeClass('myClass'); <br/>element.removeClass(); | remove a class <br/>or remove all class |
 
