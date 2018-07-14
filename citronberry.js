@@ -1,3 +1,5 @@
+//Todo : change element for elements or nodes ?
+
 function Element(selector){
 	var _this = this;
 	this.nodeList = document.querySelectorAll(selector);
@@ -37,12 +39,16 @@ function Element(selector){
 
 	this.removeClass = function(className) {
 		_this.nodeList.forEach(function(nodeElement) {
-			var classArray = nodeElement.className.split(' ');
-			while (classArray.indexOf(className) !== -1) {
-				id = classArray.indexOf(className);
-				classArray.splice(id, 1);
+			if(className) {
+				var classArray = nodeElement.className.split(' ');
+				while (classArray.indexOf(className) !== -1) {
+					id = classArray.indexOf(className);
+					classArray.splice(id, 1);
+				}
+				nodeElement.className = classArray.join(' ');				
+			} else {
+				nodeElement.className = '';
 			}
-			nodeElement.className = classArray.join(' ');
 		});
 		//Todo : remove several classNames ?
 	}

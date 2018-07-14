@@ -48,5 +48,11 @@ console.log(
 	'Remove all target class on one element: ' + (aloneVanilla[0].className === 'alone add' ) + '\n' +
 	'Remove all target class on several elements: ' + ((severalVanilla[0].className === 'several add') && (severalVanilla[1].className === 'several add'))
 );
+alone.removeClass();
+several.removeClass();
+console.log(
+	'Remove all class on one element: ' + (aloneVanilla[0].className === '' ) + '\n' +
+	'Remove all class on several elements: ' + ((severalVanilla[0].className === '') && (severalVanilla[1].className === ''))
+);
 
 
