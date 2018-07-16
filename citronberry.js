@@ -1,8 +1,10 @@
 //Todo : change element for elements or nodes ?
+//Todo : verify if element already exist before return a new object
 
 function Element(selector){
 	var _this = this;
-	this.nodeList = document.querySelectorAll(selector);
+	this.selector = selector
+	this.nodeList = document.querySelectorAll(_this.selector);
 
 	//Class
 	this.getClass = function() {
@@ -35,6 +37,8 @@ function Element(selector){
 				nodeElement.className += ' ' + className;
 			}
 		});
+
+		return _this;
 	}
 
 	this.removeClass = function(className) {
@@ -51,6 +55,8 @@ function Element(selector){
 			}
 		});
 		//Todo : remove several classNames ?
+
+		return _this;
 	}
 
 
