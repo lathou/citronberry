@@ -11,6 +11,7 @@ describe('selection of DOM element',() => {
 		Wrapper.appendChild(element);
 		
 		$element = new Element('.uniqueElement');
+		console.log($element)
 		expect($element.node).toEqual(element);
 	});
 
@@ -191,5 +192,29 @@ describe('class functionalities: ', () => {
 			expect(multipleElement1.className).toEqual('');
 			expect(multipleElement2.className).toEqual('');
 		});
+
+        it('removes several classes on unique element when it is called without class argument and returns the CB element', () => {
+            uniqueElement = document.createElement('div');
+            uniqueElement.className = 'uniqueElement class1 class2';
+            Wrapper.appendChild(uniqueElement);
+
+            $uniqueElement = new Element('.uniqueElement');
+            expect($uniqueElement.removeClass('class1', 'class2')).toEqual($uniqueElement);
+            expect(uniqueElement.className).toEqual('uniqueElement');
+        });
+
+        it('removes several classes on multiple elements when it is called without class argument and returns the CB element', () => {
+            multipleElement1 = document.createElement('div');
+            multipleElement2 = document.createElement('div');
+            multipleElement1.className = 'multipleElement multipleElement1  class1 class2';
+            multipleElement2.className = 'multipleElement multipleElement2  class1 class2';
+            Wrapper.appendChild(multipleElement1);
+            Wrapper.appendChild(multipleElement2);
+
+            $multipleElements = new Element('.multipleElement');
+            expect($multipleElements.removeClass('class1', 'class2')).toEqual($multipleElements);
+            expect(multipleElement1.className).toEqual('multipleElement multipleElement1');
+            expect(multipleElement2.className).toEqual('multipleElement multipleElement2');
+        });
 	});
 });
