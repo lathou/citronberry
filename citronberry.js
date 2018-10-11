@@ -5,97 +5,64 @@ function isAnId(selector) {
 	return /^#/.test(selector);
 }
 
-function getNodeType(node) {
-	if(node !== undefined && node.nodeType === 1) {
-		return 'node';
-	} else if(NodeList.prototype.isPrototypeOf(node)) {
-		return 'nodeList';
-	}
-}
-
 function getElements(selector) {
 	if(isAnId(selector)) {
-		return document.getElementById(selector.substr(1));
+		return [document.getElementById(selector.substr(1))];
 	} else{
-        const elements = document.querySelectorAll(selector);
-        return elements.length > 1 ? elements : elements[0];
+        return document.querySelectorAll(selector);
 	}
 }
 
 function Element(selector){
 	const _this = this;
 	this.selector = selector;
-	this.node = getElements(_this.selector);
-	this.nodeType = getNodeType(_this.node);
+	this.nodeList = getElements(_this.selector);
 }
 
 Element.prototype.getClass = function() {
-    switch (this.nodeType) {
-        case 'node':
-            return this.node.className;
+    if (this.nodeList.length === 1) {
+        return this.nodeList[0].className;
 
-        case 'nodeList' :
-            console.warn('CitronBerry : Can\'t get class of several elements');
-            break;
+    } else if (this.nodeList.length > 1){
+        console.warn('CitronBerry : Can\'t get class of several elements');
 
-        case undefined :
-            console.warn('CitronBerry : Can\'t get class of undefined');
-            break;
+	} else if (this.nodeList.length === 0) {
+        console.warn('CitronBerry : Can\'t get class of undefined');
     }
 };
 
 Element.prototype.hasClass = function(className) {
-    switch (this.nodeType) {
-        case 'node':
-            return this.node.classList.contains(className);
+    if (this.nodeList.length === 1) {
+        return this.nodeList[0].classList.contains(className);
 
-        case 'nodeList' :
-            console.warn('CitronBerry : Can\'t compare classes of several elements');
-            break;
+    } else if (this.nodeList.length > 1){
+        console.warn('CitronBerry : Can\'t compare classes of several elements');
 
-        case undefined :
-            console.warn('CitronBerry : Can\'t compare classes of undefined');
-            break;
+    } else if (this.nodeList.length === 0) {
+        console.warn('CitronBerry : Can\'t compare classes of undefined');
     }
 };
 
 Element.prototype.addClass = function(className) {
-    switch (this.nodeType) {
-        case 'node':
-            this.node.classList.add(className);
-            break;
-
-        case 'nodeList' :
-            this.node.forEach((nodeElement) => {
-                nodeElement.classList.add(className)
-            });
-            break;
-
-        case undefined :
-            console.warn('CitronBerry : Can\'t add class on undefined');
-            break;
-    }
+	if (this.nodeList.length > 0) {
+		this.nodeList.forEach((nodeElement) => {
+			nodeElement.classList.add(className)
+		});
+	} else {
+        console.warn('CitronBerry : Can\'t add class on undefined');
+	}
 
     return this;
 };
 
 Element.prototype.removeClass = function(...className) {
-    switch (this.nodeType) {
-		case 'node':
+    if (this.nodeList.length > 0) {
+        this.nodeList.forEach((nodeElement) => {
             className.length ?
-                this.node.classList.remove(...className) : this.node.className = '';
-            break;
-
-        case 'nodeList' :
-            this.node.forEach((nodeElement) => {
-                className.length ?
-                    nodeElement.classList.remove(...className) : nodeElement.className = '';
-            });
-            break;
-
-        case undefined :
-            console.warn('CitronBerry : Can\'t remove class on undefined');
-            break;
+                nodeElement.classList.remove(...className) : nodeElement.className = '';
+        });
+    } else {
+    	console.warn('CitronBerry : Can\'t remove class of undefined');
     }
 
     return this;

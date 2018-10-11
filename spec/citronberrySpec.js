@@ -11,8 +11,8 @@ describe('selection of DOM element',() => {
 		Wrapper.appendChild(element);
 		
 		$element = new Element('.uniqueElement');
-		console.log($element)
-		expect($element.node).toEqual(element);
+        expect($element.nodeList.length).toEqual(1);
+		expect($element.nodeList[0]).toEqual(element);
 	});
 
     it('selects a unique element with the css ID selector', () => {
@@ -21,10 +21,23 @@ describe('selection of DOM element',() => {
         Wrapper.appendChild(element);
 
         $element = new Element('#uniqueElement');
-        expect($element.node).toEqual(element);
+        expect($element.nodeList.length).toEqual(1);
+        expect($element.nodeList[0]).toEqual(element);
     });
 
-	//Todo: select multiple elements
+    it('selects multiple elements with the css class selector', () => {
+        element1 = document.createElement('div');
+        element2 = document.createElement('div');
+        element1.className = 'multipleElement';
+        element2.className = 'multipleElement';
+        Wrapper.appendChild(element1);
+        Wrapper.appendChild(element2);
+
+        $element = new Element('.multipleElement');
+        expect($element.nodeList.length).toEqual(2);
+        expect($element.nodeList[0]).toEqual(element1);
+        expect($element.nodeList[1]).toEqual(element2);
+    });
 });
 
 describe('class functionalities: ', () => {
