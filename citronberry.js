@@ -1,63 +1,107 @@
 //Todo : change element for elements or nodes ?
 //Todo : verify if element already exist before return a new object
 
+function isAnId(selector) {
+	return /^#/.test(selector);
+}
+
+function getNodeType(node) {
+	if(node !== undefined && node.nodeType === 1) {
+		return 'node';
+	} else if(NodeList.prototype.isPrototypeOf(node)) {
+		return 'nodeList';
+	}
+}
+
+function getElements(selector) {
+	if(isAnId(selector)) {
+		return document.getElementById(selector.substr(1));
+	} else{
+        const elements = document.querySelectorAll(selector);
+        return elements.length > 1 ? elements : elements[0];
+	}
+}
+
 function Element(selector){
-	var _this = this;
-	this.selector = selector
-	this.nodeList = document.querySelectorAll(_this.selector);
+	const _this = this;
+	this.selector = selector;
+	this.node = getElements(_this.selector);
+	this.nodeType = getNodeType(_this.node);
 
 	//Class
-	this.getClass = function() {
-		var nodeList = _this.nodeList;
+	this.getClass = () => {
+		switch (_this.nodeType) {
+			case 'node':
+                return _this.node.className;
 
-		if(nodeList.length === 1) {
-			return nodeList[0].className;
-		} else if (nodeList.length > 1) {
-			console.warn('CitronBerry : Can\'t get className of several elements');
-		} else if (nodeList.length === 0) {
-			console.warn('CitronBerry : Can\'t get className of undefined');
-		}
+			case 'nodeList' :
+                console.warn('CitronBerry : Can\'t get class of several elements');
+                break;
 
-		return;	
-	}
+			case undefined :
+                console.warn('CitronBerry : Can\'t get class of undefined');
+                break;
+        }
+	};
 
-	this.hasClass = function(className) {
-		if(_this.getClass()) {
-			var classArray =  _this.getClass().split(' ');
-			return (classArray.indexOf(className) !== -1);			
-		}
+	this.hasClass = (className) => {
+        switch (_this.nodeType) {
+            case 'node':
+                return _this.node.classList.contains(className);
 
-		return;
-	}
+            case 'nodeList' :
+                console.warn('CitronBerry : Can\'t compare classes of several elements');
+                break;
 
-	this.addClass = function(className) {
-		_this.nodeList.forEach(function(nodeElement) {
-			var classArray = nodeElement.className.split(' ');
-			if(classArray.indexOf(className) === -1) {
-				nodeElement.className += ' ' + className;
-			}
-		});
+            case undefined :
+                console.warn('CitronBerry : Can\'t compare classes of undefined');
+                break;
+        }
+	};
+
+	this.addClass = (className) => {
+        switch (_this.nodeType) {
+            case 'node':
+                _this.node.classList.add(className);
+                break;
+
+            case 'nodeList' :
+                _this.node.forEach((nodeElement) => {
+                    nodeElement.classList.add(className)
+                });
+                break;
+
+            case undefined :
+                console.warn('CitronBerry : Can\'t add class on undefined');
+                break;
+        }
 
 		return _this;
-	}
+	};
 
-	this.removeClass = function(className) {
-		_this.nodeList.forEach(function(nodeElement) {
-			if(className) {
-				var classArray = nodeElement.className.split(' ');
-				while (classArray.indexOf(className) !== -1) {
-					id = classArray.indexOf(className);
-					classArray.splice(id, 1);
-				}
-				nodeElement.className = classArray.join(' ');				
-			} else {
-				nodeElement.className = '';
-			}
-		});
+	this.removeClass = (className) => {
+        switch (_this.nodeType) {
+            case 'node':
+            	className ?
+                	_this.node.classList.remove(className) : _this.node.className = '';
+                break;
+
+            case 'nodeList' :
+                _this.node.forEach((nodeElement) => {
+                	className ?
+						nodeElement.classList.remove(className) : nodeElement.className = '';
+                });
+                break;
+
+            case undefined :
+                console.warn('CitronBerry : Can\'t remove class on undefined');
+                break;
+        }
+
 		//Todo : remove several classNames ?
 
 		return _this;
-	}
+	};
 
 
 	//node

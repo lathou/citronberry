@@ -5,17 +5,25 @@ beforeEach(function(){
 });
 
 describe('selection of DOM element',() => {
-	it('selects a unique element with the css selector', () => {
+	it('selects a unique element with the css class selector', () => {
 		element = document.createElement('div');
 		element.className = 'uniqueElement';
 		Wrapper.appendChild(element);
 		
 		$element = new Element('.uniqueElement');
-		expect($element.nodeList).toEqual(element);
+		expect($element.node).toEqual(element);
 	});
 
+    it('selects a unique element with the css ID selector', () => {
+        element = document.createElement('div');
+        element.id = 'uniqueElement';
+        Wrapper.appendChild(element);
+
+        $element = new Element('#uniqueElement');
+        expect($element.node).toEqual(element);
+    });
+
 	//Todo: select multiple elements
-	//Todo: select with ID
 });
 
 describe('class functionalities: ', () => {
