@@ -12,8 +12,9 @@ Ex : var element = new Element('.myClass');
 
 | Methods                    | example                                        |                                                 |
 | -------------------------- |------------------------------------------------| ------------------------------------------------|
-|**getClass()**              | var class = element.getClass();                | return a string                                 |
-| **hasClass(*class*)**      | var hasClass = element.hasClass(String);             | return a boolean                                |
-| **addClass(*class*)**      | element.addClass(String);                | add a class and return Element object                                     |
+|**getClass()**              | var class = element.getClass();                | return a string |
+| **hasClass(*class*)**      | var hasClass = element.hasClass(String);             | return a boolean   |
+| **addClass(*class*)**      | element.addClass(String);                | add a class and return Element object  |
 | **removeClass(*class*)**   | element.removeClass(String[,string]); <br/>element.removeClass(); | remove one or more classes <br/>or remove all classes<br/> and return Element object |
+| **toggleClass(*class*)**      | element.toggleClass(String);                | if it already exists, remove the class, else, add the class and return Element object   |
 
