@@ -13,7 +13,7 @@ Ex : var element = new Element('.myClass');
 | Methods                    | example                                        |                                                 |
 | -------------------------- |------------------------------------------------| ------------------------------------------------|
 |**getClass()**              | var class = element.getClass();                | return a string                                 |
-| **hasClass(*class*)**      | var hasClass = element.hasClass();             | return a boolean                                |
-| **addClass(*class*)**      | element.addClass('myNewClass');                | add a class and return Element object                                     |
-| **removeClass(*class*)**   | element.removeClass('myClass'); <br/>element.removeClass(); | remove a classes <br/>or remove all class<br/> and return Element object |
+| **hasClass(*class*)**      | var hasClass = element.hasClass(String);             | return a boolean                                |
+| **addClass(*class*)**      | element.addClass(String);                | add a class and return Element object                                     |
+| **removeClass(*class*)**   | element.removeClass(String); <br/>element.removeClass();<br/> element.removeClass(string [,string]) | remove one or more classes <br/>or remove all classes<br/> and return Element object |
 
