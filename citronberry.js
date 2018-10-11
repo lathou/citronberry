@@ -1,18 +1,6 @@
 //Todo : change element for elements or nodes ?
 //Todo : verify if element already exist before return a new object
 
-function isAnId(selector) {
-	return /^#/.test(selector);
-}
-
-function getElements(selector) {
-	if(isAnId(selector)) {
-		return [document.getElementById(selector.substr(1))];
-	} else{
-        return document.querySelectorAll(selector);
-	}
-}
-
 function Element(selector){
 	const _this = this;
 	this.selector = selector;
@@ -68,13 +56,35 @@ Element.prototype.removeClass = function(...className) {
     return this;
 };
 
+Element.prototype.toggleClass = function(className) {
+    if (this.nodeList.length > 0) {
+        this.nodeList.forEach((nodeElement) => {
+        	nodeElement.classList.toggle(className);
+        });
+    } else {
+        console.warn('CitronBerry : Can\'t toggle class of undefined');
+    }
 
-//node
-Element.prototype.find = function(selector) {
-    return
-}
+    return this;
+};
+
+
+//node (find, closest)
 
 //events
 
-//DOM
+//DOM (createElement, append, ...)
+
+//Helpers
+function isAnId(selector) {
+    return /^#/.test(selector);
+}
+
+function getElements(selector) {
+    if(isAnId(selector)) {
+        return [document.getElementById(selector.substr(1))];
+    } else{
+        return document.querySelectorAll(selector);
+    }
+}
 

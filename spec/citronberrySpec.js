@@ -230,4 +230,37 @@ describe('class functionalities: ', () => {
             expect(multipleElement2.className).toEqual('multipleElement multipleElement2');
         });
 	});
+
+    describe('toggle function',() => {
+        it('toggles class on unique element that has already the class and returns the CB element', () => {
+            uniqueElement = document.createElement('div');
+            uniqueElement.className = 'uniqueElement otherClass';
+            Wrapper.appendChild(uniqueElement);
+
+            $uniqueElement = new Element('.uniqueElement');
+            expect($uniqueElement.toggleClass('otherClass')).toEqual($uniqueElement);
+            expect(uniqueElement.className).toEqual('uniqueElement');
+
+            expect($uniqueElement.toggleClass('otherClass')).toEqual($uniqueElement);
+            expect(uniqueElement.className).toEqual('uniqueElement otherClass');
+        });
+
+        it('toggles class on multiple elements and returns the CB elements', () => {
+            multipleElement1 = document.createElement('div');
+            multipleElement2 = document.createElement('div');
+            multipleElement1.className = 'multipleElement multipleElement1 otherClass';
+            multipleElement2.className = 'multipleElement multipleElement2 otherClass';
+            Wrapper.appendChild(multipleElement1);
+            Wrapper.appendChild(multipleElement2);
+
+            $multipleElements = new Element('.multipleElement');
+            expect($multipleElements.toggleClass('otherClass')).toEqual($multipleElements);
+            expect(multipleElement1.className).toEqual('multipleElement multipleElement1');
+            expect(multipleElement2.className).toEqual('multipleElement multipleElement2');
+
+            expect($multipleElements.toggleClass('otherClass')).toEqual($multipleElements);
+            expect(multipleElement1.className).toEqual('multipleElement multipleElement1 otherClass');
+            expect(multipleElement2.className).toEqual('multipleElement multipleElement2 otherClass');
+        });
+	});
 });
