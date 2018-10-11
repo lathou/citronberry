@@ -4,8 +4,8 @@ Javacript shortcuts: jquery like, but lighter.
 
 
 ## Select node(s)
-**new Element(*CSSselector*)**<br/>
-Ex : var element = new Element('.myClass');
+**cb(*CSSselector*)**<br/>
+Ex : var element = cb('.myClass');
 
 
 ## Class
