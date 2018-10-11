@@ -10,7 +10,7 @@ describe('selection of DOM element',() => {
 		element.className = 'uniqueElement';
 		Wrapper.appendChild(element);
 		
-		$element = new Element('.uniqueElement');
+		$element = cb('.uniqueElement');
         expect($element.nodeList.length).toEqual(1);
 		expect($element.nodeList[0]).toEqual(element);
 	});
@@ -20,7 +20,7 @@ describe('selection of DOM element',() => {
         element.id = 'uniqueElement';
         Wrapper.appendChild(element);
 
-        $element = new Element('#uniqueElement');
+        $element = cb('#uniqueElement');
         expect($element.nodeList.length).toEqual(1);
         expect($element.nodeList[0]).toEqual(element);
     });
@@ -33,7 +33,7 @@ describe('selection of DOM element',() => {
         Wrapper.appendChild(element1);
         Wrapper.appendChild(element2);
 
-        $element = new Element('.multipleElement');
+        $element = cb('.multipleElement');
         expect($element.nodeList.length).toEqual(2);
         expect($element.nodeList[0]).toEqual(element1);
         expect($element.nodeList[1]).toEqual(element2);
@@ -48,7 +48,7 @@ describe('class functionalities: ', () => {
 			uniqueElement.className = 'uniqueElement';
 			Wrapper.appendChild(uniqueElement);
 
-			$uniqueElement = new Element('.uniqueElement');
+			$uniqueElement = cb('.uniqueElement');
 			expect($uniqueElement.getClass()).toEqual('uniqueElement');	
 		});
 
@@ -60,12 +60,12 @@ describe('class functionalities: ', () => {
 			Wrapper.appendChild(multipleElement1);
 			Wrapper.appendChild(multipleElement2);
 
-			$multipleElements = new Element('.multipleElement');
+			$multipleElements = cb('.multipleElement');
 			expect($multipleElements.getClass()).toEqual(undefined);
 		});
 
 		it('returns undefined on undefined element', () => {
-			$undefinedElement = new Element('.undefinedElement');
+			$undefinedElement = cb('.undefinedElement');
 			expect($undefinedElement.getClass()).toEqual(undefined);
 		});
 	});
@@ -76,7 +76,7 @@ describe('class functionalities: ', () => {
 			uniqueElement.className = 'uniqueElement otherClass';
 			Wrapper.appendChild(uniqueElement);
 
-			$uniqueElement = new Element('.uniqueElement');
+			$uniqueElement = cb('.uniqueElement');
 			expect($uniqueElement.hasClass('otherClass')).toEqual(true);	
 		});
 
@@ -85,7 +85,7 @@ describe('class functionalities: ', () => {
 			uniqueElement.className = 'uniqueElement';
 			Wrapper.appendChild(uniqueElement);
 
-			$uniqueElement = new Element('.uniqueElement');
+			$uniqueElement = cb('.uniqueElement');
 			expect($uniqueElement.hasClass('otherClass')).toEqual(false);
 		});
 
@@ -97,12 +97,12 @@ describe('class functionalities: ', () => {
 			Wrapper.appendChild(multipleElement1);
 			Wrapper.appendChild(multipleElement2);
 
-			$multipleElements = new Element('.multipleElement');
+			$multipleElements = cb('.multipleElement');
 			expect($multipleElements.hasClass('otherClass')).toEqual(undefined);
 		});
 
 		it('returns undefined if the function is called on undefined element', () => {
-			$undefinedElement = new Element('.undefinedElement');
+			$undefinedElement = cb('.undefinedElement');
 			expect($undefinedElement.hasClass('undefinedElement')).toEqual(undefined);
 		});	
 	});
@@ -113,7 +113,7 @@ describe('class functionalities: ', () => {
 			uniqueElement.className = 'uniqueElement';
 			Wrapper.appendChild(uniqueElement);
 
-			$uniqueElement = new Element('.uniqueElement');
+			$uniqueElement = cb('.uniqueElement');
 			expect($uniqueElement.addClass('otherClass')).toEqual($uniqueElement);
 			expect(uniqueElement.className).toEqual('uniqueElement otherClass');
 		});
@@ -126,7 +126,7 @@ describe('class functionalities: ', () => {
 			Wrapper.appendChild(multipleElement1);
 			Wrapper.appendChild(multipleElement2);
 
-			$multipleElements = new Element('.multipleElement');
+			$multipleElements = cb('.multipleElement');
 			expect($multipleElements.addClass('otherClass')).toEqual($multipleElements);
 			expect(multipleElement1.className).toEqual('multipleElement multipleElement1 otherClass');
 			expect(multipleElement2.className).toEqual('multipleElement multipleElement2 otherClass');
@@ -137,7 +137,7 @@ describe('class functionalities: ', () => {
 			uniqueElement.className = 'uniqueElement otherClass';
 			Wrapper.appendChild(uniqueElement);
 
-			$uniqueElement = new Element('.uniqueElement');
+			$uniqueElement = cb('.uniqueElement');
 			expect($uniqueElement.addClass('otherClass')).toEqual($uniqueElement);
 			expect(uniqueElement.className).toEqual('uniqueElement otherClass');
 		});
@@ -150,7 +150,7 @@ describe('class functionalities: ', () => {
 			Wrapper.appendChild(multipleElement1);
 			Wrapper.appendChild(multipleElement2);
 
-			$multipleElements = new Element('.multipleElement');
+			$multipleElements = cb('.multipleElement');
 			expect($multipleElements.addClass('otherClass')).toEqual($multipleElements);
 			expect(multipleElement1.className).toEqual('multipleElement multipleElement1 otherClass');
 			expect(multipleElement2.className).toEqual('multipleElement multipleElement2 otherClass');
@@ -163,7 +163,7 @@ describe('class functionalities: ', () => {
 			uniqueElement.className = 'uniqueElement otherClass';
 			Wrapper.appendChild(uniqueElement);
 
-			$uniqueElement = new Element('.uniqueElement');
+			$uniqueElement = cb('.uniqueElement');
 			expect($uniqueElement.removeClass('otherClass')).toEqual($uniqueElement);
 			expect(uniqueElement.className).toEqual('uniqueElement');
 		});
@@ -176,7 +176,7 @@ describe('class functionalities: ', () => {
 			Wrapper.appendChild(multipleElement1);
 			Wrapper.appendChild(multipleElement2);
 
-			$multipleElements = new Element('.multipleElement');
+			$multipleElements = cb('.multipleElement');
 			expect($multipleElements.removeClass('otherClass')).toEqual($multipleElements);
 			expect(multipleElement1.className).toEqual('multipleElement multipleElement1');
 			expect(multipleElement2.className).toEqual('multipleElement multipleElement2');
@@ -187,7 +187,7 @@ describe('class functionalities: ', () => {
 			uniqueElement.className = 'uniqueElement';
 			Wrapper.appendChild(uniqueElement);
 
-			$uniqueElement = new Element('.uniqueElement');
+			$uniqueElement = cb('.uniqueElement');
 			expect($uniqueElement.removeClass()).toEqual($uniqueElement);
 			expect(uniqueElement.className).toEqual('');
 		});
@@ -200,7 +200,7 @@ describe('class functionalities: ', () => {
 			Wrapper.appendChild(multipleElement1);
 			Wrapper.appendChild(multipleElement2);
 
-			$multipleElements = new Element('.multipleElement');
+			$multipleElements = cb('.multipleElement');
 			expect($multipleElements.removeClass()).toEqual($multipleElements);
 			expect(multipleElement1.className).toEqual('');
 			expect(multipleElement2.className).toEqual('');
@@ -211,7 +211,7 @@ describe('class functionalities: ', () => {
             uniqueElement.className = 'uniqueElement class1 class2';
             Wrapper.appendChild(uniqueElement);
 
-            $uniqueElement = new Element('.uniqueElement');
+            $uniqueElement = cb('.uniqueElement');
             expect($uniqueElement.removeClass('class1', 'class2')).toEqual($uniqueElement);
             expect(uniqueElement.className).toEqual('uniqueElement');
         });
@@ -224,7 +224,7 @@ describe('class functionalities: ', () => {
             Wrapper.appendChild(multipleElement1);
             Wrapper.appendChild(multipleElement2);
 
-            $multipleElements = new Element('.multipleElement');
+            $multipleElements = cb('.multipleElement');
             expect($multipleElements.removeClass('class1', 'class2')).toEqual($multipleElements);
             expect(multipleElement1.className).toEqual('multipleElement multipleElement1');
             expect(multipleElement2.className).toEqual('multipleElement multipleElement2');
@@ -237,7 +237,7 @@ describe('class functionalities: ', () => {
             uniqueElement.className = 'uniqueElement otherClass';
             Wrapper.appendChild(uniqueElement);
 
-            $uniqueElement = new Element('.uniqueElement');
+            $uniqueElement = cb('.uniqueElement');
             expect($uniqueElement.toggleClass('otherClass')).toEqual($uniqueElement);
             expect(uniqueElement.className).toEqual('uniqueElement');
 
@@ -253,7 +253,7 @@ describe('class functionalities: ', () => {
             Wrapper.appendChild(multipleElement1);
             Wrapper.appendChild(multipleElement2);
 
-            $multipleElements = new Element('.multipleElement');
+            $multipleElements = cb('.multipleElement');
             expect($multipleElements.toggleClass('otherClass')).toEqual($multipleElements);
             expect(multipleElement1.className).toEqual('multipleElement multipleElement1');
             expect(multipleElement2.className).toEqual('multipleElement multipleElement2');
