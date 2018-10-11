@@ -1,5 +1,7 @@
-//Todo : DOM : parent, siblings, find, closest, createElement, append, ...
+//Todo : parent, siblings, closest, createElement, append, ...
 
 Elements.prototype.find = function(selector) {
-    return new Elements(selector, this.nodeList[0]);
+    if(this.nodeList) {
+        return new Elements(selector, this.nodeList, this.selector);
+    }
 };
