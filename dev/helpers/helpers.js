@@ -1,9 +1,13 @@
-function isAnId(selector) {
-    return /^#/.test(selector);
+function getSelectorType(selector) {
+    if(/^#/.test(selector)) {
+        return 'id';
+    } else if (/^\./.test(selector)) {
+        return 'class';
+    }
 }
 
 function getElements(selector, parents) {
-    if(isAnId(selector) && parents === document) {
+    if(getSelectorType(selector) === 'id' && parents === document) {
         return [document.getElementById(selector.substr(1))];
 
     } else if( parents === document) {
@@ -16,4 +20,9 @@ function getElements(selector, parents) {
         });
         return nodeList;
     }
+}
+
+function getContextString({context, contextSelector, contextType}) {
+    console.log(context)
+    return ((context) ? context.nodeName : '') + (contextSelector ? contextSelector : '') + ' ' + contextType;
 }

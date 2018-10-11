@@ -79,4 +79,19 @@ describe('dom manipulation functionalities: ', () => {
             expect($children.nodeList[0]).toEqual(child2);
         });
 	});
+
+    describe('closest function',() => {
+        it('returns unique closest parent', () => {
+            uniqueParent = document.createElement('div');
+            uniqueParent.className = 'uniqueParent';
+            Wrapper.appendChild(uniqueParent);
+
+            child = document.createElement('div');
+            child.id = 'child';
+            uniqueParent.appendChild(child);
+
+            $child = cb('#child');
+            expect($child.closest('.uniqueParent').nodeList[0]).toEqual(uniqueParent);
+        });
+	});
 });
