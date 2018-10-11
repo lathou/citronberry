@@ -1,4 +1,4 @@
-Element.prototype.getClass = function() {
+Elements.prototype.getClass = function() {
     if (this.nodeList.length === 1) {
         return this.nodeList[0].className;
 
@@ -10,7 +10,7 @@ Element.prototype.getClass = function() {
     }
 };
 
-Element.prototype.hasClass = function(className) {
+Elements.prototype.hasClass = function(className) {
     if (this.nodeList.length === 1) {
         return this.nodeList[0].classList.contains(className);
 
@@ -22,7 +22,7 @@ Element.prototype.hasClass = function(className) {
     }
 };
 
-Element.prototype.addClass = function(className) {
+Elements.prototype.addClass = function(className) {
 	if (this.nodeList.length > 0) {
 		this.nodeList.forEach((nodeElement) => {
 			nodeElement.classList.add(className)
@@ -34,7 +34,7 @@ Element.prototype.addClass = function(className) {
     return this;
 };
 
-Element.prototype.removeClass = function(...className) {
+Elements.prototype.removeClass = function(...className) {
     if (this.nodeList.length > 0) {
         this.nodeList.forEach((nodeElement) => {
             className.length ?
@@ -47,7 +47,7 @@ Element.prototype.removeClass = function(...className) {
     return this;
 };
 
-Element.prototype.toggleClass = function(className) {
+Elements.prototype.toggleClass = function(className) {
     if (this.nodeList.length > 0) {
         this.nodeList.forEach((nodeElement) => {
         	nodeElement.classList.toggle(className);
